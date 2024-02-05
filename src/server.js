@@ -4,6 +4,10 @@ import { routes } from './routes.js'
 import { json } from './middlewares/json.js'
 import { extractQueryParams } from './utils/extract-query-params.js'
 
+const port = 3333
+
+console.log(`Server is running on http://localhost:${port} 🚀`)
+
 const server = http.createServer(async (req, res) => {
   const { method, url } = req
 
@@ -24,7 +28,7 @@ const server = http.createServer(async (req, res) => {
     return route.handler(req, res)
   }
 
-  return res.writeHead(404).end
+  return res.writeHead(404).end()
 })
 
-server.listen(3333)
+server.listen(port)
